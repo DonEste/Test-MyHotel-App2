@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Job {
     @Id
     @GeneratedValue
-    private int jobId;
+    private String jobId;
     private String jobTitle;
     private double minSalary;
     private double maxSalary;
@@ -25,18 +25,18 @@ public class Job {
     public Job() {
     }
 
-    public Job(int jobId, String jobTitle, double minSalary, double maxSalary) {
+    public Job(String jobId, String jobTitle, double minSalary, double maxSalary) {
         this.jobId = jobId;
         this.jobTitle = jobTitle;
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
     }
 
-    public int getJobId() {
+    public String getJobId() {
         return jobId;
     }
 
-    public void setJobId(int jobId) {
+    public void setJobId(String jobId) {
         this.jobId = jobId;
     }
 
