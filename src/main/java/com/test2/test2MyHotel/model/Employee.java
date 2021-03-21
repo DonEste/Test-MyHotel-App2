@@ -41,7 +41,6 @@ public class Employee {
     @JoinColumn(name = "department_id")
     @JsonBackReference
     private Department department;
-
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<JobHistory> jobHistories = new ArrayList<>();
 
