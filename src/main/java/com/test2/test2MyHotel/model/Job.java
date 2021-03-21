@@ -5,17 +5,21 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "jobs")
 public class Job {
+    @Id
+    @GeneratedValue
     private int jobId;
     private String jobTitle;
     private double minSalary;
     private double maxSalary;
-    @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Employee> employees = new ArrayList<>();
 
     public Job() {

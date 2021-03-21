@@ -6,9 +6,11 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -28,15 +30,18 @@ public class Employee {
     private String phoneNumber;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Timestamp hireDate;
+    @ManyToOne
     @JoinColumn(name = "job_id")
     @JsonBackReference
     private Job job;
     private double salary;
     private double comissionPct;
     private int managerId;
+    @ManyToOne
     @JoinColumn(name = "department_id")
     @JsonBackReference
     private Department department;
+
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<JobHistory> jobHistories = new ArrayList<>();
 
@@ -144,13 +149,4 @@ public class Employee {
     public void setJob(Job job) {
         this.job = job;
     }
-
-    public List<JobHistory> getJobHistories() {
-        return jobHistories;
-    }
-
-    public void setJobHistories(List<JobHistory> jobHistories) {
-        this.jobHistories = jobHistories;
-    }
-
 }

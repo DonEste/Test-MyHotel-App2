@@ -27,9 +27,9 @@ public class Department {
     @JoinColumn(name = "location_id")
     @JsonBackReference
     private Location location;
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(targetEntity = Employee.class, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Employee> employees = new ArrayList<>();
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(targetEntity = JobHistory.class, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<JobHistory> jobHistories = new ArrayList<>();
 
     public Department() {

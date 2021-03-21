@@ -1,17 +1,23 @@
 package com.test2.test2MyHotel.model;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "job_history")
-public class JobHistory {
+@IdClass(JobHistoryId.class)
+public class JobHistory{
+
+    @ManyToOne
     @JoinColumn(name = "employee_id")
     @JsonBackReference
     @Id
@@ -20,10 +26,10 @@ public class JobHistory {
     private Timestamp startDate;
     private Timestamp endDate;
     private String jobId;
+    @ManyToOne
     @JoinColumn(name = "department_id")
     @JsonBackReference
     private Department department;
-
     public JobHistory() {
     }
 
