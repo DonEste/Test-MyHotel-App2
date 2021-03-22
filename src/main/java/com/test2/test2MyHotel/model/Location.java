@@ -83,14 +83,6 @@ public class Location {
         this.stateProvince = stateProvince;
     }
 
-    public Country getCountries() {
-        return country;
-    }
-
-    public void setCountries(Country country) {
-        this.country = country;
-    }
-
     public Country getCountry() {
         return country;
     }

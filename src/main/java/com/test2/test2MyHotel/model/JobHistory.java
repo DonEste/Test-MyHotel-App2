@@ -19,6 +19,7 @@ public class JobHistory{
     @ManyToOne
     @JoinColumn(name = "employee_id")
     @Id
+    @JsonBackReference
     private Employee employee;
     @Id
     private Timestamp startDate;
@@ -26,6 +27,7 @@ public class JobHistory{
     private String jobId;
     @ManyToOne
     @JoinColumn(name = "department_id")
+    @JsonBackReference
     private Department department;
     
     public JobHistory() {

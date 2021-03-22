@@ -67,5 +67,5 @@ public class Country {
     public void setLocations(List<Location> locations) {
         this.locations = locations;
     }
-
+    
 }

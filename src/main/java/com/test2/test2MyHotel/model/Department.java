@@ -30,7 +30,6 @@ public class Department {
     @JsonBackReference
     private List<Employee> employees = new ArrayList<>();
     @OneToMany(targetEntity = JobHistory.class, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonBackReference
     private List<JobHistory> jobHistories = new ArrayList<>();
 
     public Department() {
