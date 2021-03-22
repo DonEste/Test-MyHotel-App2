@@ -1,10 +1,13 @@
 package com.test2.test2MyHotel.model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class JobHistoryId implements Serializable {
-    private Employee employee;
+
+	private static final long serialVersionUID = 1L;
+	
+	private Employee employee;
     private Timestamp startDate;
 
     public Employee getEmployee() {
