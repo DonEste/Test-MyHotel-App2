@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "jobs")
 public class Job {
@@ -20,6 +22,7 @@ public class Job {
     private double minSalary;
     private double maxSalary;
     @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<Employee> employees = new ArrayList<>();
 
     public Job() {

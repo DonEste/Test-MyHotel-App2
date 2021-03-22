@@ -25,9 +25,9 @@ public class Location {
     private String stateProvince;
     @ManyToOne
     @JoinColumn(name = "country_id")
-    @JsonBackReference
     private Country country;
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<Department> departments = new ArrayList<>();
 
     public Location() {

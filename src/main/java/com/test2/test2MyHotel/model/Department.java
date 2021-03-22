@@ -25,11 +25,12 @@ public class Department {
     private int managerId;
     @ManyToOne
     @JoinColumn(name = "location_id")
-    @JsonBackReference
     private Location location;
     @OneToMany(targetEntity = Employee.class, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<Employee> employees = new ArrayList<>();
     @OneToMany(targetEntity = JobHistory.class, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<JobHistory> jobHistories = new ArrayList<>();
 
     public Department() {
