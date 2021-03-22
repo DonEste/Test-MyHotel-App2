@@ -1,12 +1,11 @@
 package com.test2.test2MyHotel.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -32,16 +31,15 @@ public class Employee {
     private Timestamp hireDate;
     @ManyToOne
     @JoinColumn(name = "job_id")
-    @JsonBackReference
     private Job job;
     private double salary;
     private double comissionPct;
     private int managerId;
     @ManyToOne
     @JoinColumn(name = "department_id")
-    @JsonBackReference
     private Department department;
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<JobHistory> jobHistories = new ArrayList<>();
 
     public Employee() {

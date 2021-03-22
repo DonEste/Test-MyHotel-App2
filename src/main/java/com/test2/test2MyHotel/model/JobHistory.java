@@ -1,7 +1,6 @@
 package com.test2.test2MyHotel.model;
 
-import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,8 +18,8 @@ public class JobHistory{
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    @JsonBackReference
     @Id
+    @JsonBackReference
     private Employee employee;
     @Id
     private Timestamp startDate;
@@ -30,6 +29,7 @@ public class JobHistory{
     @JoinColumn(name = "department_id")
     @JsonBackReference
     private Department department;
+    
     public JobHistory() {
     }
 

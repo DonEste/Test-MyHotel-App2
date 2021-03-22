@@ -17,30 +17,30 @@ import java.util.List;
 public class Country {
     @Id
     @GeneratedValue
-    private int country_id;
+    private String country_id;
     private String country_name;
     @ManyToOne
     @JoinColumn(name = "region_id")
-    @JsonBackReference
     private Region region;
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<Location> locations = new ArrayList<>();
 
     public Country() {
 
     }
 
-    public Country(int country_id, String country_name, Region region) {
+    public Country(String country_id, String country_name, Region region) {
         this.country_id = country_id;
         this.country_name = country_name;
         this.region = region;
     }
 
-    public int getCountry_id() {
+    public String getCountry_id() {
         return country_id;
     }
 
-    public void setCountry_id(int country_id) {
+    public void setCountry_id(String country_id) {
         this.country_id = country_id;
     }
 
@@ -67,5 +67,5 @@ public class Country {
     public void setLocations(List<Location> locations) {
         this.locations = locations;
     }
-
+    
 }

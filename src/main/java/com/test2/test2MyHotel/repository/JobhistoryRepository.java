@@ -7,6 +7,6 @@ import com.test2.test2MyHotel.model.JobHistoryId;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Transactional
-public interface JobHistoryRepository extends JpaRepository<JobHistory, Integer> {
+public interface JobHistoryRepository extends JpaRepository<JobHistory, JobHistoryId> {
 
 }
