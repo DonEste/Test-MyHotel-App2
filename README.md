@@ -11,42 +11,31 @@
     Finalmente por razones que no he comprendido aún, me sale el siguiente error: java.io.StreamCorruptedException: invalid stream header: 31393837... Y con eso no vale la pena seguir avanzando sin corregirlo :(
     Lo planeo arreglar antes de morir, pero ya no alcancé al plazo de 24 horas que se especificó en el correo.
 	
-    java -jar target/test-myhotel-0.0.1-SNAPSHOT.jar
+    java -jar target/test2-MyHotel-0.0.1-SNAPSHOT.jar
 
 ## BD:
-    Se debe configurar la conexión a alguna BD MySQL para que se creen las tablas necesarias, que en este caso son la tabla vehiculos y la tabla mantenciones
-	
-## El endpoint que planeaba hacer era el siguiente:
+    Se debe configurar la conexión a alguna BD MySQL con el schema con los datos en el dump que se entregó para el ejercicio
+    
+    Los datos de el dump contienen dos errores que tienen que ser corregidos para que las relaciones en Hybernate pueda trabajar corectamente, lo que yo hice para solucionarlo fue lo siguiente:
 
-	Buscar empleados bajo ciertos filtros (POST)
-		http://localhost:8080/employee/
+    insert into countries values ('EN', 'Inglaterra', 1);
+    update locations set country_id = 'EN' where country_id = 'OX';
+    update employees set department_id = 10 where department_id = 0;
+    commit;
+
+    ... Podría haber dehecho las relaciones en cada entidad, pero perdí demasiado tiempo viendo qué estaba mal como para rehacer eso :(
+	
+## El endpoint que alcancé a hacer en el plazo es el siguiente:
+
+	Buscar empleados bajo filtros de salario (POST) -- Ambos campos son opcionales
+		http://localhost:8080/employeesBySalary/
 			Body:
 			{
-                "table": ["employees", "departments", "location"], 
-                "grouped_by": department,
-                "conditions": [
-                    {
-                        "field": "employees.salary", 
-                        "criteria": ">", 
-                        "value": 3500
-                    },
-                    {
-                        "field": "employees.salary", 
-                        "criteria": "<", 
-                        "value": 8000
-                    }
-                    ],
-                "grouped": [
-                    "copuntry", 
-                    "department"
-                ], 
-                "secialfields":[
-                    "max(employee.salary)", 
-                    "min(employee.salary)"
-                ]
+                "lowRange": 3500,
+                "highRange": 80000
             }
-    
-    Si, se ve algo complicado, pero no imposible... Seguro que me falta algo por corregir que no permite que se pueden cumplir todas las condiciones listadas en el PDF, pero esperaba iterar un poco para pulir eso :(
+
+    Los demás no los alcancé a hacer en el plazo :(
     
 	
 ## GIT Repository
