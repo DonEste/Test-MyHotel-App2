@@ -1,5 +1,7 @@
 # MyHotel Test
 
+    Las querys solicitadas en el segudno ejercicio están en el archivo Querys.sql 
+
 ## Compilar el proyecto
 	
 	./mvnw clean package
